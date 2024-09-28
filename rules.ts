@@ -15,19 +15,11 @@ import {
 const hjklToArrowKeys: Partial<Record<KeyCode, LayerCommand>> = {
 	h: {
 		description: "hjkl to arrow keys",
-		to: [
-			{
-				key_code: "left_arrow",
-			},
-		],
+		to: [{ key_code: "left_arrow" }],
 	},
 	j: {
 		description: "hjkl to arrow keys",
-		to: [
-			{
-				key_code: "down_arrow",
-			},
-		],
+		to: [{ key_code: "down_arrow" }],
 	},
 	k: {
 		description: "hjkl to arrow keys",
@@ -125,6 +117,8 @@ const rules: KarabinerRules[] = [
 			s: app("Slack"),
 			t: app("Telegram"),
 			v: app("Visual Studio Code"), // Vscode
+			z: app("Zed"), // Zed
+			k: app("Kitty"),
 			w: app("Warp"),
 		},
 		p: {
@@ -141,6 +135,8 @@ const rules: KarabinerRules[] = [
 			t: quit("Telegram"),
 			v: quit("Visual Studio Code"), // Vscode
 			w: quit("Warp"),
+			z: quit("Zed"), // Zed
+			k: quit("Kitty"),
 		},
 
 		// TODO: This doesn't quite work yet.
