@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "tsm rules.ts",
-    "watch": "nodemon --exec yarn build -e ts"
+    "sync": "cp karabiner.json ~/.config/karabiner/karabiner.json",
+    "watch": "nodemon --exec 'npm run build && npm run sync' -e ts"
   }
 }
