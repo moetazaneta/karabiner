@@ -2147,7 +2147,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g rectangle://execute-action?name=previous-display"
+                    "shell_command": "open -g raycast://extensions/raycast/window-management/previous-display"
                   }
                 ],
                 "description": "Window: previous-display",
@@ -2171,7 +2171,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g rectangle://execute-action?name=next-display"
+                    "shell_command": "open -g raycast://extensions/raycast/window-management/next-display"
                   }
                 ],
                 "description": "Window: next-display",
@@ -2195,7 +2195,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g rectangle://execute-action?name=top-half"
+                    "shell_command": "open -g raycast://extensions/raycast/window-management/top-half"
                   }
                 ],
                 "description": "Window: top-half",
@@ -2219,7 +2219,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g rectangle://execute-action?name=bottom-half"
+                    "shell_command": "open -g raycast://extensions/raycast/window-management/bottom-half"
                   }
                 ],
                 "description": "Window: bottom-half",
@@ -2243,7 +2243,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g rectangle://execute-action?name=left-half"
+                    "shell_command": "open -g raycast://extensions/raycast/window-management/left-half"
                   }
                 ],
                 "description": "Window: left-half",
@@ -2267,7 +2267,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g rectangle://execute-action?name=right-half"
+                    "shell_command": "open -g raycast://extensions/raycast/window-management/right-half"
                   }
                 ],
                 "description": "Window: right-half",
@@ -2291,7 +2291,7 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g rectangle://execute-action?name=maximize"
+                    "shell_command": "open -g raycast://extensions/raycast/window-management/maximize"
                   }
                 ],
                 "description": "Window: maximize",
