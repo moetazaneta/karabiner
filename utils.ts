@@ -275,3 +275,9 @@ export function shortcut(name: string): LayerCommand {
 		description: `Quit ${name}`,
 	};
 }
+
+export function mapObjectValues(obj: Record<string, string>, fn: (value: string) => LayerCommand): Record<string, LayerCommand> {
+	return Object.fromEntries(
+		Object.entries(obj).map(([key, value]) => [key, fn(value)]),
+	);
+}

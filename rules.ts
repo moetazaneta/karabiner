@@ -5,6 +5,7 @@ import {
 	app,
 	createHyperSubLayers,
 	createLayer,
+	mapObjectValues,
 	open,
 	quit,
 	window,
@@ -35,8 +36,53 @@ const hjklToArrowKeys: Partial<Record<KeyCode, LayerCommand>> = {
 	},
 };
 
+const appOpenKeys = {
+	1: "1Password",
+	b: "Obsidian",
+	c: "Notion Calendar",
+	d: "Discord",
+	e: "Spark Desktop",
+	f: "Finder",
+	g: "Ghostty",
+	h: "Todoist",
+	j: "Day One",
+	m: "Spotify",
+	n: "Notion",
+	s: "Slack",
+	t: "Telegram",
+	v: "Cursor",
+	w: "Zen Browser",
+	z: "Zed",
+	u: "Figma",
+} as const
+
 const rules: KarabinerRules[] = [
 	...createLayer("right_command", hjklToArrowKeys),
+	{
+		description: "Right Command as delete on tap",
+		manipulators: [
+			{
+				description: "right cmd -> backspace on click",
+				from: {
+					key_code: "right_command",
+					modifiers: {
+						optional: ["any"],
+					},
+				},
+				to: [
+					{
+						key_code: "right_command",
+					},
+				],
+				to_if_alone: [
+					{
+						key_code: "delete_or_backspace",
+					},
+				],
+				type: "basic",
+			},
+		],
+	},
 	// Define the Hyper key itself
 	{
 		description: "Hyper Key (⌃⌥⇧⌘)",
@@ -104,55 +150,8 @@ const rules: KarabinerRules[] = [
 			y: open("https://youtube.com"),
 		},
 		// o = "Open" applications
-		o: {
-			1: app("1Password"),
-			a: app("Arc"),
-			c: app("Notion Calendar"), // Calendar
-			d: app("Discord"),
-			e: app("Spark Desktop"), // Email
-			f: app("Finder"),
-			h: app("Things3"), // tHings
-			m: app("Spotify"), // Music
-			n: app("Notion"),
-			s: app("Slack"),
-			t: app("Telegram"),
-			v: app("Visual Studio Code"), // Vscode
-			z: app("Zed"), // Zed
-			k: app("Kitty"),
-			w: app("Warp"),
-		},
-		p: {
-			1: quit("1Password"),
-			a: quit("Arc"),
-			c: quit("Notion Calendar"), // Calendar
-			d: quit("Discord"),
-			e: quit("Spark Desktop"), // Email
-			f: quit("Finder"),
-			h: quit("Things3"), // tHings
-			m: quit("Spotify"), // Music
-			n: quit("Notion"),
-			s: quit("Slack"),
-			t: quit("Telegram"),
-			v: quit("Visual Studio Code"), // Vscode
-			w: quit("Warp"),
-			z: quit("Zed"), // Zed
-			k: quit("Kitty"),
-		},
-
-		// TODO: This doesn't quite work yet.
-		// l = "Layouts" via Raycast's custom window management
-		// l: {
-		//   // Coding layout
-		//   c: shell`
-		//     open -a "Visual Studio Code.app"
-		//     sleep 0.2
-		//     open -g "raycast://customWindowManagementCommand?position=topLeft&relativeWidth=0.5"
-
-		//     open -a "Terminal.app"
-		//     sleep 0.2
-		//     open -g "raycast://customWindowManagementCommand?position=topRight&relativeWidth=0.5"
-		//   `,
-		// },
+		o: mapObjectValues(appOpenKeys, app),
+		x: mapObjectValues(appOpenKeys, quit),
 
 		// w = "Window"
 		w: {
