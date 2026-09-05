@@ -11,7 +11,8 @@
     "tsm": "^2.2.2"
   },
   "scripts": {
-    "build": "tsm rules.ts",
+    "build": "tsm rules.ts && tsm generate-shortcuts.ts",
+    "build:shortcuts": "tsm generate-shortcuts.ts",
     "sync": "cp karabiner.json ~/.config/karabiner/karabiner.json",
     "watch": "nodemon --exec 'npm run build && npm run sync' -e ts"
   }

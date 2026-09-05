@@ -38,20 +38,18 @@ const hjklToArrowKeys: Partial<Record<KeyCode, LayerCommand>> = {
 
 const appOpenKeys = {
 	1: "1Password",
+	2: "Helium",
+	3: "T3 Code",
 	b: "Obsidian",
-	c: "Notion Calendar",
-	d: "Discord",
 	e: "Spark Desktop",
 	f: "Finder",
 	g: "Ghostty",
-	h: "Todoist",
-	j: "Day One",
+	h: "Things",
 	m: "Spotify",
-	n: "Notion",
 	s: "Slack",
 	t: "Telegram",
 	v: "Cursor",
-	w: "Zen Browser",
+	w: "Google Chrome",
 	z: "Zed",
 	u: "Figma",
 } as const
@@ -140,14 +138,6 @@ const rules: KarabinerRules[] = [
 		f7: {
 			description: "Toggle Caps Lock",
 			to: [{ key_code: "caps_lock" }],
-		},
-		spacebar: open(
-			"raycast://extensions/stellate/mxstbr-commands/create-notion-todo",
-		),
-		// b = "B"rowse
-		b: {
-			t: open("https://twitter.com"),
-			y: open("https://youtube.com"),
 		},
 		// o = "Open" applications
 		o: mapObjectValues(appOpenKeys, app),
@@ -289,30 +279,6 @@ const rules: KarabinerRules[] = [
 			),
 		},
 	}),
-	{
-		description: "Change Backspace to Spacebar when Minecraft is focused",
-		manipulators: [
-			{
-				type: "basic",
-				from: {
-					key_code: "delete_or_backspace",
-				},
-				to: [
-					{
-						key_code: "spacebar",
-					},
-				],
-				conditions: [
-					{
-						type: "frontmost_application_if",
-						file_paths: [
-							"^/Users/mxstbr/Library/Application Support/minecraft/runtime/java-runtime-gamma/mac-os-arm64/java-runtime-gamma/jre.bundle/Contents/Home/bin/java$",
-						],
-					},
-				],
-			},
-		],
-	},
 ];
 
 fs.writeFileSync(
